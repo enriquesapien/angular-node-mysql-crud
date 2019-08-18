@@ -1,5 +1,8 @@
 import express, { Application } from 'express';
 
+import indexRoutes from './routes/indexRoutes';
+//import gamesRoutes from './routes/gamesRoutes';
+
 class Server {
     public app: Application;
 
@@ -17,7 +20,7 @@ class Server {
     }
 
     routes(): void {
-
+        this.app.use(indexRoutes);
     }
 
     start(): void {
