@@ -31,13 +31,13 @@ class GamesController {
         res.json({text: 'Updating a game: ' + req.params.id });
     }
 
-    public delete (req: Request, res: Response) {
-        res.json({text: 'Deleting a game: ' + req.params.id });
+    public async delete (req: Request, res: Response): Promise<void> {
+
+        // destructuring
+        const { id } = req.params;
+        await pool.query('delete from game where game_id = ?', [id]);
+        res.json({message: 'The game has been deleted' });
     }
-
-
-
-
 }
 
 const gamesController = new GamesController();
