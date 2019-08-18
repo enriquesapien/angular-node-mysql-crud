@@ -6,7 +6,7 @@ class IndexRoutes {
         this.router = express_1.Router();
         this.config();
     }
-    // To setup the routes to be served by this server
+    // To setup the routes to be served by this router
     config() {
         this.router.get('/', (req, res) => res.send('Hello'));
     }

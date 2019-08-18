@@ -10,7 +10,7 @@ class IndexRoutes {
         this.config();
     }
 
-    // To setup the routes to be served by this server
+    // To setup the routes to be served by this router
     config(): void {
         this.router.get('/', (req, res) => res.send('Hello'));
     }
