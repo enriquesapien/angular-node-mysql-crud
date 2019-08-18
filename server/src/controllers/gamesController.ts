@@ -8,9 +8,17 @@ class GamesController {
         //res.send('Hello from Games controller');
 
         // to force DB connection
-        pool.query('DESCRIBE game;');
+        //pool.query('DESCRIBE game;');
         res.json('games');
     }
+
+
+    public create (req: Request, res: Response) {
+        res.json({text: 'Creating a game'});
+    }
+
+
+
 
 }
 

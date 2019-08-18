@@ -14,6 +14,7 @@ class GamesRoutes {
     // To setup the routes to be served by this router
     config(): void {
         this.router.get('/', gamesController.index);
+        this.router.post('/', gamesController.create);
     }
 
 }
