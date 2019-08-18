@@ -12,8 +12,9 @@ class GamesController {
         res.json({text: 'Getting a game: ' + req.params.id });
     }
 
-    public create (req: Request, res: Response) {
-        res.json({text: 'Creating a game'});
+    public async create (req: Request, res: Response): Promise<void> {
+        await pool.query('insert into game set ?', [req.body]);
+        res.json({message: 'Game saved'});
     }
 
     public update (req: Request, res: Response) {
