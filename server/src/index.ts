@@ -1,7 +1,33 @@
-console.log('hola desde server');
+import express, { Application } from 'express';
 
-console.log('otro log');
+class Server {
+    public app: Application;
 
-console.log('otro');
+    constructor() {
+        this.app = express();
+        this.config();
+        this.routes();
+    }
 
-console.log('otro mas para nodemon');
+    config(): void {
+        // if there is a port in the environment 
+        // (e.g. provided by cloud service like Heroku, etc)
+        // use it. otherwise, use 3000
+        this.app.set('port', process.env.PORT || 3000);
+    }
+
+    routes(): void {
+
+    }
+
+    start(): void {
+        this.app.listen(this.app.get('port'), () => {
+            console.log('Server on port: ', this.app.get('port'));
+        });
+    }
+}
+
+
+const server = new Server();
+
+server.start();

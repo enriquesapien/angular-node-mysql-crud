@@ -1,5 +1,28 @@
 "use strict";
-console.log('hola desde server');
-console.log('otro log');
-console.log('otro');
-console.log('otro mas para nodemon');
+var __importDefault = (this && this.__importDefault) || function (mod) {
+    return (mod && mod.__esModule) ? mod : { "default": mod };
+};
+Object.defineProperty(exports, "__esModule", { value: true });
+const express_1 = __importDefault(require("express"));
+class Server {
+    constructor() {
+        this.app = express_1.default();
+        this.config();
+        this.routes();
+    }
+    config() {
+        // if there is a port in the environment 
+        // (e.g. provided by cloud service like Heroku, etc)
+        // use it. otherwise, use 3000
+        this.app.set('port', process.env.PORT || 3000);
+    }
+    routes() {
+    }
+    start() {
+        this.app.listen(this.app.get('port'), () => {
+            console.log('Server on port: ', this.app.get('port'));
+        });
+    }
+}
+const server = new Server();
+server.start();
