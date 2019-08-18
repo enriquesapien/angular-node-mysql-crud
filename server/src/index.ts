@@ -21,6 +21,10 @@ class Server {
         this.app.set('port', process.env.PORT || 3000);
         this.app.use(morgan('dev'));
         this.app.use(cors());
+        // to accept and return JSON
+        this.app.use(express.json());
+        // to process HTML forms
+        this.app.use(express.urlencoded({extended: false}));
     }
 
     routes(): void {
