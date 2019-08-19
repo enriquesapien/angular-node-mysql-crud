@@ -19,16 +19,20 @@ class GamesController {
             return res.json(games[0]);
         }
 
-        res.status(404).json({message: 'The game does not exist'});
+        res.status(404).json({ message: 'The game does not exist' });
     }
 
     public async create (req: Request, res: Response): Promise<void> {
         await pool.query('insert into game set ?', [req.body]);
-        res.json({message: 'Game saved'});
+        res.json({ message: 'Game saved' });
     }
 
-    public update (req: Request, res: Response) {
-        res.json({text: 'Updating a game: ' + req.params.id });
+    public async update (req: Request, res: Response): Promise<void> {
+
+        // destructuring
+        const { id } = req.params;
+        await pool.query('update game set ? where game_id = ?', [req.body, id]);
+        res.json({ message: 'The game has been updated' });
     }
 
     public async delete (req: Request, res: Response): Promise<void> {
@@ -36,7 +40,7 @@ class GamesController {
         // destructuring
         const { id } = req.params;
         await pool.query('delete from game where game_id = ?', [id]);
-        res.json({message: 'The game has been deleted' });
+        res.json({ message: 'The game has been deleted' });
     }
 }
 
