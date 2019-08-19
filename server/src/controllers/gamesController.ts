@@ -11,8 +11,7 @@ class GamesController {
 
     public async getOne (req: Request, res: Response): Promise<any> {
 
-        // destructuring
-        const { id } = req.params;
+        const id = req.query.id;
         const games = await pool.query('select * from game where game_id = ?', [id]);
 
         if (games.length > 0) {
@@ -29,16 +28,14 @@ class GamesController {
 
     public async update (req: Request, res: Response): Promise<void> {
 
-        // destructuring
-        const { id } = req.params;
+        const id = req.query.id;
         await pool.query('update game set ? where game_id = ?', [req.body, id]);
         res.json({ message: 'The game has been updated' });
     }
 
     public async delete (req: Request, res: Response): Promise<void> {
 
-        // destructuring
-        const { id } = req.params;
+        const id = req.query.id;
         await pool.query('delete from game where game_id = ?', [id]);
         res.json({ message: 'The game has been deleted' });
     }
