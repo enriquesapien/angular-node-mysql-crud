@@ -1,5 +1,3 @@
-
-
 -- MySQL Workbench Forward Engineering
 
 SET @OLD_UNIQUE_CHECKS=@@UNIQUE_CHECKS, UNIQUE_CHECKS=0;
@@ -20,12 +18,12 @@ USE `ng_games_db` ;
 -- Table `ng_games_db`.`game`
 -- -----------------------------------------------------
 CREATE TABLE IF NOT EXISTS `ng_games_db`.`game` (
-  `game_id` INT UNSIGNED NOT NULL AUTO_INCREMENT,
+  `id` INT UNSIGNED NOT NULL AUTO_INCREMENT,
   `title` VARCHAR(45) NOT NULL,
   `description` VARCHAR(255) NOT NULL,
   `image` VARCHAR(255) NOT NULL,
-  `created` TIMESTAMP NOT NULL DEFAULT CURRENT_TIMESTAMP,
-  PRIMARY KEY (`game_id`));
+  `created_at` TIMESTAMP NOT NULL DEFAULT CURRENT_TIMESTAMP,
+  PRIMARY KEY (`id`));
 
 
 SET SQL_MODE=@OLD_SQL_MODE;
