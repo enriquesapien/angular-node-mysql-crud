@@ -32,14 +32,15 @@ class Server {
         this.app.use('/api/games', gamesRoutes);
     }
 
-    start(): void {
-        this.app.listen(this.app.get('port'), () => {
-            console.log('Server on port: ', this.app.get('port'));
-        });
-    }
+    // start(): void {
+    //     this.app.listen(this.app.get('port'), () => {
+    //         console.log('Server on port: ', this.app.get('port'));
+    //     });
+    // }
 }
 
 
 const server = new Server();
+export default server.app;
 
-server.start();
+//server.start();
