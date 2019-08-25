@@ -25,8 +25,7 @@ export class GameFormComponent implements OnInit {
   }
 
   saveNewGame() {
-    console.log('game: ' + this.game);
-    
+    console.log(this.game);
   }
 
 }
